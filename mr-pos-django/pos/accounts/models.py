@@ -9,6 +9,28 @@ from django.urls import reverse,reverse_lazy
 from settings.models import Customer,Supplier
 from bank.models import BankTransactionType
 
+
+#=========================================#
+# Common info start
+#=========================================#
+def get_transaction_id():
+    # result = str(123).zfill(5) out: '00123' usecase: Add zeros to the left of the string
+    import random
+    numbers =  ''.join([str(random.randint(1,9)) for _ in range(7)])
+    res = 'TR'+(numbers)
+    return res
+
+# image upload for employee
+def get_upload_directory(instance, filename):
+    # Generate the upload directory based on the current date
+    return f"images/profile/{instance.user.id}/{datetime.now().strftime('%Y/%m/%d')}"
+#=========================================#
+# Common info end
+#=========================================#  
+
+#=========================================#
+# Usetr  related table start
+#=========================================#
 class User(AbstractUser):
     email = models.EmailField(max_length=255,unique=True)
     phone_number = PhoneNumberField(_("Phone number"),blank=True)
@@ -17,6 +39,7 @@ class User(AbstractUser):
     phone_1 = models.CharField(max_length=16, blank=True, null=True)
     phone_2 = models.CharField(max_length=16, blank=True, null=True)
     email = models.EmailField(max_length=254, blank=True, null=True,unique=True)
+    status = models.BooleanField(default=False)
     # group = models.CharField(max_length=15,choices=Group.objects.all().values_list('name', 'name'),blank=True, null=True)
                     
     USERNAME_FIELD = 'email'
@@ -38,20 +61,23 @@ class User(AbstractUser):
         return f"{self.id}-{self.email}"
     
   
+class UserProfile(TimeStampMixin):
+    GENDER_CHOICE =[
+            ('','select a gender'), 
+            ('male','male'), 
+            ('female','female'), 
+        ]
+    user = models.OneToOneField(User, on_delete=models.CASCADE, editable=False)
+    date_of_birth = models.DateTimeField(_("Date of Birth"), default=datetime.now(), blank=False, null=False)
+    gender = models.CharField(max_length=20, blank=False, null=False, choices=GENDER_CHOICE, default='')
+    profile_picture = models.ImageField(upload_to=get_upload_directory, height_field=None, width_field=None, max_length=None)
+    status = models.BooleanField(default=True)
 #=========================================#
-# Common info start
+# Usetr  related table start
 #=========================================#
-def get_transaction_id():
-    # result = str(123).zfill(5) out: '00123' usecase: Add zeros to the left of the string
-    import random
-    numbers =  ''.join([str(random.randint(1,9)) for _ in range(7)])
-    res = 'TR'+(numbers)
-    return res
 
-#=========================================#
-# Common info end
-#=========================================#  
-    
+
+
 #=========================================#
 # Customer Transaction related table start
 #=========================================# 
