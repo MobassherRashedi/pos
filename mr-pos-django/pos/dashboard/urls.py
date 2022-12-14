@@ -1,5 +1,7 @@
 from django.urls import path
+from .views import DashboardView 
+
 
 urlpatterns = [
-    # path('', include('debug_toolbar.urls')),
+    path('', DashboardView.as_view(), name='dashboard.home'),
 ]

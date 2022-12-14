@@ -1,5 +1,7 @@
 from django.urls import path
+from .views import IncomeHomeView 
+
 
 urlpatterns = [
-    # path('', include('debug_toolbar.urls')),
+    path('', IncomeHomeView.as_view(), name='income.home'),
 ]

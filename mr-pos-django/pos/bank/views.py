@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 
-# Create your views here.
+
+class BankHomeView(TemplateView):
+    template_name = "bank/index.html"

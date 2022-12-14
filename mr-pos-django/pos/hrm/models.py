@@ -88,7 +88,7 @@ class EmployeeSalaryPayment(TimeStampMixin):
     providend_fund = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=False)
     tax = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=False)
     date = models.DateTimeField(blank=True,null=True, default=datetime.now())
-    salary_month_unique_for_year = models.DateField(blank=False,null=False,unique=True,default=datetime.month)
+    salary_month_unique_for_year = models.DateField(blank=False,null=False,unique=True,default=datetime.now())
     commission = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0.00)
     deduction = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0.00)
     

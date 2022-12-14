@@ -44,8 +44,8 @@ class User(AbstractUser):
 def get_transaction_id():
     # result = str(123).zfill(5) out: '00123' usecase: Add zeros to the left of the string
     import random
-    numbers = [random.randint(1, 9) for _ in range(9)]
-    res = 'TR'.join(str(numbers))
+    numbers =  ''.join([str(random.randint(1,9)) for _ in range(7)])
+    res = 'TR'+(numbers)
     return res
 
 #=========================================#

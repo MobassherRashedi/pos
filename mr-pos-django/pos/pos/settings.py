@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "corsheaders",
     "phonenumber_field",
+    "crispy_forms",
+    "crispy_bootstrap5",
     # custom 
     'accounts',
     'dashboard',
@@ -150,7 +152,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static/'),
+]
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -169,8 +173,12 @@ CORS_ALLOW_CREDENTIALS = True
 # auth 
 AUTH_USER_MODEL = 'accounts.User'
 
-# jazzmin 
+# crispy form 
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
+
+# jazzmin 
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
     "site_title": "Library Admin",

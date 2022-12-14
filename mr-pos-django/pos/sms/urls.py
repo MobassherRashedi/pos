@@ -1,5 +1,8 @@
 from django.urls import path
+from .views import SmsHomeView 
+
 
 urlpatterns = [
-    # path('', include('debug_toolbar.urls')),
+    path('', SmsHomeView.as_view(), name='sms.home'),
 ]
+

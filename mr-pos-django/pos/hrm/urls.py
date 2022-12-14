@@ -1,5 +1,8 @@
 from django.urls import path
+from .views import HrmHomeView 
+
 
 urlpatterns = [
-    # path('', include('debug_toolbar.urls')),
+    path('', HrmHomeView.as_view(), name='hrm.home'),
 ]
+

@@ -14,7 +14,7 @@ class Bank(TimeStampMixin):
         verbose_name_plural = _('Bank')
         
     def __str__(self) -> str:
-        return f"{self.id}"
+        return f"{self.name}"
 
 class BankTransactionType(TimeStampMixin):
     name = models.CharField(max_length=150,blank=False,null=False)
@@ -24,7 +24,7 @@ class BankTransactionType(TimeStampMixin):
         verbose_name_plural = _('Bank Transaction Type')
         
     def __str__(self) -> str:
-        return f"{self.id}"
+        return f"{self.name}"
 
 class BankTransaction(TimeStampMixin):
     bank_account = models.ForeignKey(Bank, on_delete=models.CASCADE)
@@ -37,5 +37,5 @@ class BankTransaction(TimeStampMixin):
         verbose_name_plural = _('Bank Transaction')
         
     def __str__(self) -> str:
-        return f"{self.id}"
+        return f"{self.id}- {self.bank_account} - {self.branch} - {self.bank_transaction_type} "
     

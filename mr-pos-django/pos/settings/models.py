@@ -9,13 +9,13 @@ from django.utils.translation import gettext as _
 def get_unique_code(title):
     # result = str(123).zfill(5) out: '00123' usecase: Add zeros to the left of the string
     import random
-    numbers = [random.randint(1, 9) for _ in range(6)]
+    numbers =  ''.join([str(random.randint(1,9)) for _ in range(7)])
     if title == 'product':
-        res = 'P'.join(str(numbers))
+        res = 'P'+(numbers)
     if title == 'customer':
-        res = 'C'.join(str(numbers))
+        res = 'C'+(numbers)
     if title == 'supplier':
-        res = 'S'.join(str(numbers))
+        res = 'S'+(numbers)
     return res
 
 def get_upload_directory(instance, filename):

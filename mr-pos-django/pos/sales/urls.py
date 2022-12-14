@@ -1,5 +1,6 @@
 from django.urls import path
+from .views import SalesHomeView
 
 urlpatterns = [
-    # path('', include('debug_toolbar.urls')),
+    path('', SalesHomeView.as_view(), name='sales.home'),
 ]

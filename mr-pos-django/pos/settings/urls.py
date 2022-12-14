@@ -1,5 +1,8 @@
 from django.urls import path
+from .views import SettingsHomeView 
+
 
 urlpatterns = [
-    # path('', include('debug_toolbar.urls')),
+    path('', SettingsHomeView.as_view(), name='settings.home'),
 ]
+
