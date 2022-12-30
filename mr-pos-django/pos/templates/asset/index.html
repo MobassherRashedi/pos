@@ -1,6 +1,6 @@
 {% extends '../base.html' %}
 {% load static %}
-
+{% load crispy_forms_tags %}
 {% block title %}
 Asset
 {% endblock title %}
@@ -9,15 +9,34 @@ Asset
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Asset</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-    <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
-    </div>
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-        <span data-feather="calendar" class="align-text-bottom"></span>
-        This week
-    </button>
-    </div>
 </div>
+</div>
+<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-5 border-bottom">
+    <form method="POST"  class="js-asset-creat-form">
+        <!-- Security token -->
+        {% csrf_token %}
+        <!-- Using the formset -->
+        {{ form|crispy }}
+        <input id="asset-form-submit" class="btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>
+{% comment %} class="d-flex  align-items-center pt-3 pb-2 mb-5" style="width:100%" {% endcomment %}
+<div >
+    <table id="asset-table" class="display table-warning table-warning" style="width:100%">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Note</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+     </table>
+</div>
+
 {% endblock content %}
     

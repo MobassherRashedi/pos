@@ -1,0 +1,19 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<form method="post" action="{% url 'bank.delete' elm_pk %}" class="js_delete_form">
+  {% csrf_token %}
+  <div class="modal-header">
+    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title">Delete Bank Account</h4>
+  </div>
+  <div class="modal-body">
+    <h5>Are you sure to delete <span class="text-danger">{{instance.name}}</span> ?</h5>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary"  data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-danger js_bank_delete_btn_confirm">Delete</button>
+  </div>
+</form>

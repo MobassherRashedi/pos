@@ -67,11 +67,11 @@ class Product(TimeStampMixin):
     purchase_rate = models.DecimalField(max_digits=7,decimal_places=2,default=00000.00, blank=False, null=False)
     sales_rate = models.DecimalField(max_digits=7,decimal_places=2,default=00000.00, blank=False, null=False)
     status = models.BooleanField(default=True)
-    returened = models.BooleanField(default=False)
+    returned = models.BooleanField(default=False)
     damaged = models.BooleanField(default=False)
     image = models.ForeignKey(ProductImages, on_delete=models.CASCADE, blank=True, null=True)
     # stock = models.CharField(max_length=350, blank=True, null=True) # this sould be connected  with product model.
-        
+    in_stock = models.BooleanField(_("In Stock"), default=True)
     class Meta:
         verbose_name = _('Product')
         verbose_name_plural = _('Product')

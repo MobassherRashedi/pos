@@ -2,10 +2,10 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('__debug__/', include('debug_toolbar.urls')),
+    # path('__debug__/', include('debug_toolbar.urls')),
     path('admin/', admin.site.urls),
     path('', include('dashboard.urls')),
-    path('auth/', include('accounts.urls')),
+    path('accounts/', include('accounts.urls')),
     path('asset/', include('asset.urls')),
     path('sales/', include('sales.urls')),
     path('purchases/', include('purchases.urls')),

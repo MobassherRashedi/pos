@@ -9,15 +9,37 @@ Stocks
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
     <h1 class="h2">Stocks</h1>
     <div class="btn-toolbar mb-2 mb-md-0">
-    <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
     </div>
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-        <span data-feather="calendar" class="align-text-bottom"></span>
-        This week
-    </button>
-    </div>
+</div>
+<div class="align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <form method="GET" action="{% url 'stocks.search' %}" class="d-flex justify-content-evenly flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <label for="Type">Search Type:</label>
+        <select id="Type">
+          <option value="instock">In Stock</option>
+          <option value="outofstock">Out of Stock</option>
+        </select>
+        <br>
+        <button  class="btn btn-success" id="btn_submit_stock" type="submit">Search</button>
+      </form>
+</div>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+    <table id="stock_table" class="table table-striped" style="width: 100%">
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th>product_code</th>
+            <th>Catagory</th>
+            <th>sub_catagory</th>
+            <th>product_unit</th>
+            <th>Qty</th>
+            <th>Sales Rate</th>
+            <th>purchase_rate</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% include 'stocks/partials/stock_table.html' %}
+        </tbody>
+    </table>
 </div>
 {% endblock content %}
     

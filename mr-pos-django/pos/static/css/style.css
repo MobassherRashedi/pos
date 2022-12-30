@@ -1,4 +1,11 @@
 
+body {
+  font-size: .875rem;
+  box-sizing: border-box;
+  background: rgba(99, 181, 99, 0.1) !important;
+  outline: 3px solid limegreen !important;
+}
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;

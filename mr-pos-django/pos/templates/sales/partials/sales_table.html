@@ -1,0 +1,30 @@
+{% if SaleCarts %}
+
+  {% for elm in SaleCarts %}
+  <tr>
+    <td>{{elm.id}}</td>
+    <td>{{elm.product.name}}</td>
+    <td>{{elm.product.catagory.name}}</td>
+    <td>{{elm.quantity}}</td>
+    <td>{{elm.product.sales_rate}}</td>
+    <td>{{elm.total_amount}} Tk</td>
+    <td> 
+      <button type="button" class="btn btn-warning btn-sm js-update-salescart-single"
+      data-url="{% url 'sales.cart.product.update' elm.id %}">
+          <span class="glyphicon glyphicon-pencil"></span> Edit
+      </button>
+      </td> 
+    <td>
+      <button type="button"
+              class="btn btn-danger btn-sm js-delete-salescart-single"
+              data-url="{% url 'sales.cart.product.delete' elm.id %}">
+          <span class="glyphicon glyphicon-trash"></span> Delete
+      </button>
+    </td>
+  </tr>
+  {% endfor %}
+{% comment %} {% else %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No Product</td>
+  </tr> {% endcomment %}
+{% endif %}

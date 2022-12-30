@@ -76,8 +76,6 @@ class UserProfile(TimeStampMixin):
 # Usetr  related table start
 #=========================================#
 
-
-
 #=========================================#
 # Customer Transaction related table start
 #=========================================# 

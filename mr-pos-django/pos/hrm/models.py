@@ -2,7 +2,7 @@ from django.db import models
 from pos.g_model import TimeStampMixin
 from datetime import datetime 
 from django.utils.translation import gettext as _
-
+from django.utils import timezone
   
 #=========================================#
 # Common info start
@@ -10,8 +10,8 @@ from django.utils.translation import gettext as _
 def get_employee_id():
     # result = str(123).zfill(5) out: '00123' usecase: Add zeros to the left of the string
     import random
-    numbers = [random.randint(1, 9) for _ in range(7)]
-    res = 'EM'.join(str(numbers))
+    numbers =  ''.join([str(random.randint(1,9)) for _ in range(7)])
+    res = 'EM'+(numbers)
     return res
 
 # image upload for employee
@@ -87,7 +87,7 @@ class EmployeeSalaryPayment(TimeStampMixin):
     transport = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=False)
     providend_fund = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=False)
     tax = models.DecimalField(max_digits=5, decimal_places=2, blank=False, null=False)
-    date = models.DateTimeField(blank=True,null=True, default=datetime.now())
+    date = models.DateTimeField(blank=True,null=True, default=timezone.now())
     salary_month_unique_for_year = models.DateField(blank=False,null=False,unique=True,default=datetime.now())
     commission = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0.00)
     deduction = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, default=0.00)

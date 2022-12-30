@@ -1,0 +1,19 @@
+{% if Products %}
+  {% for elm in Products %}
+  <tr>
+    <td>{{elm.name}}</td>
+    <td>{{elm.product_code}}</td>
+    <td>{{elm.catagory}}</td>
+    <td>{{elm.sub_catagory}}</td>
+    <td>{{elm.product_unit}}</td>
+    <td>{{elm.alert_qty}}</td>
+    <td>{{elm.purchase_rate}}</td>
+    <td>{{elm.sales_rate}}</td>
+  </tr>
+
+  {% endfor %}
+{% comment %} {% else %}
+  <tr>
+    <td colspan="8" class="text-center bg-warning">No Product</td>
+  </tr> {% endcomment %}
+{% endif %}

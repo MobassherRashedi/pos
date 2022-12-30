@@ -1,0 +1,5 @@
+
+{% comment %} <a class="btn btn-info edit_btn" href="{% url 'bank.edit' record.pk %}">Edit</a>
+<input class="btn btn-info edit_btn" href="{% url 'bank.edit' record.pk %}"> {% endcomment %}
+{% comment %} <button class="btn btn-info edit_btn" value={{record.pk}} type="button">Edit</button> {% endcomment %}
+<button class="btn btn-info edit_btn" value={{record.pk}} data-url="{% url 'bank.edit_json' record.pk %}" type="button">Edit</button>

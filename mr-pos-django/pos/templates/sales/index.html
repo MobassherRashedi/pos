@@ -1,23 +1,139 @@
 {% extends '../base.html' %}
 {% load static %}
+{% load crispy_forms_tags %} 
 
-{% block title %}
-Sales
-{% endblock title %}
-    
+{%block title %} Sales {% endblock title %} 
+
 {% block content %}
 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <h1 class="h2">Sales</h1>
-    <div class="btn-toolbar mb-2 mb-md-0">
-    <div class="btn-group me-2">
-        <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-        <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+  <h1 class="h2">Sales Entry</h1>
+  <div class="btn-toolbar mb-2 mb-md-0"></div>
+</div>
+
+<div class="row">
+  <div class="col-8">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      {{ sales_form.invoice_no|as_crispy_field }} 
+      <div id="div_id_sales-purchased_by" class="mb-3">
+        <label for="id_sales-purchased_by" class="form-label requiredField">
+          Purchased by<span class="asteriskField">*</span>
+        </label>
+        <input
+          name="sales-purchased_by"
+          readonly="true"
+          class="select form-select"
+          required=""
+          id="id_sales-purchased_by"
+          value="{{user}}"
+        />
+      </div>
+      {{ sales_form.date|as_crispy_field }}
     </div>
-    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-        <span data-feather="calendar" class="align-text-bottom"></span>
-        This week
-    </button>
+
+    <div class="row">
+      <h3 class="text-muted">Customer and Product information</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-4 justify-content-center">
+        {{ sales_form.barcode|as_crispy_field }}
+      </div>
+
+      <div class="row">
+        <div class="col-5">
+          <div class="input-group">
+            {{ sales_form.customer|as_crispy_field }}
+            <a class="btn btn-outline-secondary add_customer_btn" href="">Add Customer</a>            
+          </div>
+          {{ sales_form.phone|as_crispy_field }} 
+          {{sales_form.address|as_crispy_field }}
+        </div>
+
+        <div class="col-5">
+          {% csrf_token %} 
+          {{ sales_form.product|as_crispy_field }}
+          <div class="row">
+            <div class="col-8">{{ sales_form.sales_rate|as_crispy_field }}</div>
+            <div class="col-4">{{ sales_form.qty|as_crispy_field }}</div>
+          </div>
+          <button
+            id="id_sales-add_product_to_cart"
+            type="submit"
+            class="btn btn-secondary"
+          >
+            Add product
+          </button>
+        </div>
+
+        <div class="col-2">{{ sales_form.stock|as_crispy_field }}</div>
+      </div>
+    </div>
+    <div class="row d-flex">
+      <table id="example" class="table table-striped" style="width: 100%">
+        <thead>
+          <tr>
+            <th>SI</th>
+            <th>Product Name</th>
+            <th>Catagory</th>
+            <th>Qty</th>
+            <th>Sales Rate</th>
+            <th>Total Amount</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {% include 'sales/partials/sales_table.html' %}
+        </tbody>
+    </table>
+  
+      <!-- THE MODAL WE WILL BE USING -->
+      <div class="modal fade" id="modal-book">
+        <div class="modal-dialog">
+          <div class="modal-content"></div>
+        </div>
+      </div>
+      
     </div>
 </div>
-{% endblock content %}
-    
+    <div class="col-4">
+      <div class="row">
+        <h3 class="text-muted">Amount</h3>
+      </div>
+      <div class="row">
+        {{ sales_cart_amount_form.sub_total|as_crispy_field }}
+        <div class="col-4">
+          {{ sales_cart_amount_form.vat|as_crispy_field }}
+        </div>
+        <div class="col-8">
+          {{ sales_cart_amount_form.vat_amount|as_crispy_field }}
+        </div>
+        <div class="col-4">
+          {{ sales_cart_amount_form.discount|as_crispy_field }}
+        </div>
+        <div class="col-8">
+          {{ sales_cart_amount_form.discount_amount|as_crispy_field }}
+        </div>
+        {{ sales_cart_amount_form.Transport|as_crispy_field }} 
+        {{sales_cart_amount_form.total|as_crispy_field }} 
+        {{sales_cart_amount_form.paid|as_crispy_field }} 
+        {{sales_cart_amount_form.due|as_crispy_field }}
+        <div class="col-12 mt-1">
+          <button type="submit" class="btn btn-success w-100">Full Paid</button>
+        </div>
+        {% comment %} <div class="col-6 mt-1">
+          <button type="submit" class="btn btn-success btn-block">Sales</button>
+        </div>
+        <div class="col-6 mt-1">
+          <button type="submit" class="btn btn-danger btn-block">Reset</button>
+        </div> {% endcomment %}
+        <div class="col-12 mt-1">
+          <button type="button" class="btn btn-danger btn-block mb-3 w-100">Reset</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% endblock content %}
+</div>

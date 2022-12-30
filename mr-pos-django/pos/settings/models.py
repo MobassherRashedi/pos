@@ -69,9 +69,14 @@ class Customer(TimeStampMixin):
     class Meta:
         verbose_name = _('Customer')
         verbose_name_plural = _('Customer')
-      
+        
+    @property
+    def full_name(self):
+        "Returns the person's full name."
+        return f"{self.first_name} {self.last_name}" 
+    
     def __str__(self) -> str:
-        return f"{self.name}"
+        return f"{self.full_name}"
     
 #=========================================#
 # Customer related table end

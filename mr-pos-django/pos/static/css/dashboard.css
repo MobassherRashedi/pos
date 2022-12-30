@@ -1,5 +1,8 @@
+
 body {
   font-size: .875rem;
+  box-sizing: border-box;
+  background: rgba(99, 181, 99, 0.1) !important;
 }
 
 .feather {
@@ -89,4 +92,8 @@ body {
 .form-control-dark:focus {
   border-color: transparent;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+
+.card_width_custom{
+  min-width: 300px !important;
 }
