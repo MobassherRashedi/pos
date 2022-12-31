@@ -13,9 +13,8 @@ POS
     </div>
 </div>
 
-<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
-        <div >
+<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+        <div class="w-100">
             <form action="" id="pos-form">
                 <fieldset>
                     <div class="row align-items-end">
@@ -44,6 +43,7 @@ POS
     
                     </div>
                 </fieldset>
+
                 <fieldset>
                     <div class="d-flex w-100" id="POS-field">
                         <div class="col-8 bg-gradient bg-light border h-100">
@@ -99,13 +99,15 @@ POS
                         </div>
                     </div>
                 </fieldset>
-                <div class="row">
-                    <div class="col-md-12 text-end">
-                        <button class="btn btn-primary btn-sm rounded-0" type="button" id="check_out"><i class="mdi mdi-save"></i> Checkout</button>
+
+                <div class="row mb-5">
+                    <div class="col-md-12 text-end mt-3">
+                        <button class="btn btn-primary rounded-0" type="button" id="check_out"><i class="mdi mdi-save"></i> Checkout</button>
                     </div>
                 </div>
             </form>
         </div>
+    </div>
     </div>
     <noscript id="item-clone">
         <tr>
@@ -124,14 +126,15 @@ POS
     </noscript>
 </div>
 
-<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-    <!-- THE MODAL WE WILL BE USING -->
-    <div class="modal fade" id="modal-book">
-        <div class="modal-dialog">
-            <div class="modal-content"></div>
-        </div>
-        </div>
+
+<div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom w-100">
+    <div class="d-flex justify-content-evenly flex-wrap flex-md-nowrap align-items-center ">
+        <button type="button" class="btn btn-primary m-auto">Product List</button>
+        <button type="button" class="btn btn-secondary m-auto">Catagory List</button>
+        <button type="button" class="btn btn-success m-auto">Sales</button>
+    </div>
 </div>
+
 <script>
     var product_json = '{{ product_json }}'
     console.log(product_json)

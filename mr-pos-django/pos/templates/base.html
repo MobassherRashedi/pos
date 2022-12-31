@@ -13,7 +13,7 @@
         {% endblock title %}
     </title>
     <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-    {% comment %} <link rel="stylesheet" href="{% static 'posApp/assets/bootstrap/css/bootstrap.min.css' %}">
+   <link rel="stylesheet" href="{% static 'posApp/assets/bootstrap/css/bootstrap.min.css' %}">
 
     <!-- plugins:css -->
     <link rel="stylesheet" href="{% static 'posApp/assets/material-admin/vendors/mdi/css/materialdesignicons.min.css' %}">
@@ -34,7 +34,7 @@
     </script>
     <script src="{% static 'posApp/assets/bootstrap/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'posApp/assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'posApp/assets/bootstrap/js/popper.min.js' %}"></script> {% endcomment %}
+    <script src="{% static 'posApp/assets/bootstrap/js/popper.min.js' %}"></script>
     <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 
 
@@ -69,6 +69,37 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 {% block content %}  
                 {% endblock content %}
+                <div class="modal fade" id="uni_modal" role='dialog'>
+                    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                        <div class="modal-content rounded-0">
+                            <div class="modal-header">
+                                <h5 class="modal-title"></h5>
+                            </div>
+                            <div class="modal-body">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn  btn-sm btn-flat btn-primary rounded-0" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary rounded-0" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="confirm_modal" role='dialog'>
+                    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                        <div class="modal-content rounded-0">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Confirmation</h5>
+                            </div>
+                            <div class="modal-body">
+                                <div id="delete_content"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-sm btn-flat btn-primary rounded-0" id='confirm' onclick="">Continue</button>
+                                <button type="button" class="btn btn-sm btn-flat btn-secondary rounded-0" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </main> 
         </div>
     </div>
@@ -119,11 +150,11 @@
 
 
   <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
-  {% comment %} <script src="{% static 'posApp/assets/material-admin/vendors/js/vendor.bundle.base.js' %}"></script>
+ <script src="{% static 'posApp/assets/material-admin/vendors/js/vendor.bundle.base.js' %}"></script>
   <script src="{% static 'posApp/assets/material-admin/js/material.js' %}"></script>
   <script src="{% static 'posApp/assets/material-admin/js/misc.js' %}"></script>
   <script src="{% static 'posApp/assets/material-admin/js/dashboard.js' %}"></script>
-  <script src="{% static 'posApp/assets/select2/dist/js/select2.full.js' %}"></script> {% endcomment %}
+  <script src="{% static 'posApp/assets/select2/dist/js/select2.full.js' %}"></script>
   <!--xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
 
     <!-- Vendor Js -->
