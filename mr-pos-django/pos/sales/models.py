@@ -29,7 +29,7 @@ def get_invoice_number():
 
 class SalesCart(TimeStampMixin):
     user = models.ForeignKey(Customer, on_delete=models.CASCADE, blank=True, null=True)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=False, null=False)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, blank=True, null=True)
     quantity = models.IntegerField()
     total_amount = models.DecimalField(max_digits=10,decimal_places=2,default=0.00)
     active = models.BooleanField(_("active"), default=True)

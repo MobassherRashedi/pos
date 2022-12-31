@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
     # third party
     # "debug_toolbar",
     "corsheaders",
@@ -59,6 +60,7 @@ INSTALLED_APPS = [
     'django_tables2',
     # custom 
     'accounts',
+    'posapp',
     'dashboard',
     'sales',
     'purchases',
