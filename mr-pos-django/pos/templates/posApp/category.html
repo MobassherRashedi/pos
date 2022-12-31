@@ -1,5 +1,14 @@
-{% extends "posApp/base.html" %} {% block pageContent %}
-<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12">
+{% extends '../base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% load render_table from django_tables2 %}
+{% block title %}
+POS
+{% endblock title %}
+    
+{% block content %}
+
+<div class="mdc-layout-grid__cell stretch-card mdc-layout-grid__cell--span-12 d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 ">
     <div class="mdc-card py-2">
         <div class="d-flex justify-content-between align-items-center">
             <h4 class="card-title mb-0">Category List</h4>
@@ -55,7 +64,6 @@
         </div>
     </div>
 </div>
-{% endblock pageContent %} {% block ScriptBlock %}
 <script>
     $(function() {
         $('#create_new').click(function() {
@@ -97,4 +105,4 @@
         })
     }
 </script>
-{% endblock ScriptBlock %}
+{% endblock content %}

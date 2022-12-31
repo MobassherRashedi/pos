@@ -129,9 +129,9 @@ POS
 
 <div class="d-flex justify-content-center flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom w-100">
     <div class="d-flex justify-content-evenly flex-wrap flex-md-nowrap align-items-center ">
-        <button type="button" class="btn btn-primary m-auto">Product List</button>
-        <button type="button" class="btn btn-secondary m-auto">Catagory List</button>
-        <button type="button" class="btn btn-success m-auto">Sales</button>
+        <a class="btn btn-primary m-2" href="{% url 'product-page' %}" role="button">Product List</a>
+        <a class="btn btn-secondary m-2" href="{% url 'category-page' %}" role="button">Catagory List</a>
+        <a class="btn btn-success m-2" href="{% url 'sales-page' %}" role="button">Sales</a>
     </div>
 </div>
 
